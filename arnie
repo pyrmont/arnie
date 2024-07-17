@@ -1,0 +1,4 @@
+#!/usr/bin/env janet
+(import ./cli)
+
+(cli/run)
