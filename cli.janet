@@ -3,6 +3,7 @@
 
 # Subcommands
 (import ./subcommands/bench :as cmd/bench)
+(import ./subcommands/make :as cmd/make)
 (import ./subcommands/prepare :as cmd/prepare)
 
 
@@ -11,6 +12,7 @@
   Subcommands for the arnie tool.
   ```
   ["bench" cmd/bench/config
+   "make" cmd/make/config
    "prepare" cmd/prepare/config])
 
 

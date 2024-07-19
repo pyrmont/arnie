@@ -1,3 +1,4 @@
-build/
-/jpm_tree/
 .DS_Store
+/jpm_tree/
+/bin/
+build/
