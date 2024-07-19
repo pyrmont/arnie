@@ -63,5 +63,5 @@
                        :default "1"
                        :help    "The number of times to run each benchmark."}
             "-----------------------------------------------------"]
-   :help "Runs the benchmarks using multiple version of Janet."
+   :help "Runs the benchmarks using multiple versions of Janet."
    :fn   subcommand})
