@@ -1,4 +1,5 @@
-(import ../../deps/native/build/big)
+(def dep-path (string "../../build/" janet/build "/big"))
+(import* dep-path)
 
 (var acc (big/int 0))
 (var den (big/int 1))

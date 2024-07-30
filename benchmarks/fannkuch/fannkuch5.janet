@@ -1,6 +1,7 @@
 # Use a C module for flipping
 
-(import ../../deps/native/build/arraymod :as arraymod)
+(def dep-path (string "../../build/" janet/build "/arraymod"))
+(import* dep-path)
 
 (defn factorial [n]
   (assert (< n 19))  # overflow for Janet
