@@ -70,12 +70,16 @@
         (each [mark times] (pairs marks)
           (put-in ret [mark bin] times)))
       ret))
+  (var first? true)
   (each [mark results] (pairs times-by-mark)
+    (if first?
+      (set first? false)
+      (print ""))
     (prin "# Benchmark: ")
-    (print (string/slice mark (length (string benchmarks-dir sep))))
+    (print mark)
     (each [bin times] (pairs results)
       (prin "Binary: ")
-      (prin (string/slice bin (length (string "bin" sep))))
+      (prin bin)
       (prin "    ")
       (var total 0)
       (var runs 0)
@@ -83,8 +87,7 @@
         (++ runs)
         (+= total (- end start)))
       (prin "Avg: ")
-      (print (/ total runs))
-      (print ""))))
+      (print (/ total runs)))))
 
 
 (defn- show
@@ -109,12 +112,12 @@
   (def bench-config (when config-path
                       (eprint "Configs are not currently supported")
                       (os/exit 1)))
-  (def runs (scan-number (get-in sub-args [:opts "num"])))
   (def format (get-in sub-args [:opts "format"]))
+  (def runs (scan-number (get-in sub-args [:opts "num"])))
+  (def benchmarks (or (get-in sub-args [:opts "run"])
+                      (get-benchmarks benchmarks-dir)))
   # Prepare native code
   (prepare exes)
-  # Get benchmarks
-  (def benchmarks (get-benchmarks benchmarks-dir))
   # Run benchmarks
   (def times (bench benchmarks exes runs))
   # (def times
@@ -149,6 +152,12 @@
                      :proxy   "count"
                      :default "1"
                      :help    "The number of runs to perform of each benchmark."}
+            "--run" {:kind  :multi
+                     :short "r"
+                     :proxy "file"
+                     :help  `A Janet script to run instead of the full suite.
+                            The option can be used multiple times to run more
+                            than one file.`}
             "-----------------------------------------------------"]
    :help "Runs the benchmarks using multiple versions of Janet."
    :fn   subcommand})
