@@ -47,7 +47,7 @@
     (print "Cleaning installs...")
     (each child (os/dir install-parent)
       (unless (= ".gitkeep" child)
-        (def path (string build-parent sep child))
+        (def path (string install-parent sep child))
         (rmrf path)))))
 
 
