@@ -1,4 +1,6 @@
 .DS_Store
 /jpm_tree/
-/bin/
-build/
+/build/*
+!/build/.gitkeep
+/installs/*
+!/installs/.gitkeep
