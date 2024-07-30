@@ -42,12 +42,17 @@
 (defn- bench
   [benchmarks exes runs]
   (def ret @{})
-  (each exe exes
-    (def devnull (file/open "/dev/null" :w))
-    (defer (:close devnull)
+  (def devnull (file/open "/dev/null" :w))
+  (defer (:close devnull)
+    (each exe exes
+      (def [r w] (os/pipe))
+      (os/execute [exe "-e" "(print janet/version `-` janet/build)"]
+                  :px {:out w :err devnull})
+      (ev/close w)
+      (def name (string "Janet " (string/slice (ev/read r :all) 0 -2)))
       (each benchmark benchmarks
         (def times @[])
-        (put-in ret [exe benchmark] times)
+        (put-in ret [name benchmark] times)
         (loop [i :in (range 1 (inc runs))]
           (try
             (do
@@ -56,7 +61,7 @@
               (def end (os/clock))
               (array/push times (tuple/brackets i start end)))
             ([e f]
-             (eprint "Binary '" exe "' running benchmark '" benchmark "' raised an error")
+             (eprint "Binary '" name "' running benchmark '" benchmark "' raised an error")
              (os/exit 1)))))))
   ret)
 
@@ -78,7 +83,6 @@
     (prin "# Benchmark: ")
     (print mark)
     (each [bin times] (pairs results)
-      (prin "Binary: ")
       (prin bin)
       (prin "    ")
       (var total 0)
