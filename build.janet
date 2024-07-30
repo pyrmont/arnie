@@ -2,6 +2,7 @@
 
 
 (def- is-win (or (= :windows (os/which)) (= :mingw (os/which))))
+(def- is-mac (= :macos (os/which)))
 (def- sep (if is-win "\\" "/"))
 (def- build-parent "build")
 (def- build-dir (string/join [build-parent janet/build] sep))
@@ -19,7 +20,7 @@
 # (setdyn :visit cc/visit-generate-makefile)
 (setdyn :build-dir build-dir)
 (setdyn :smart-libs false)
-(setdyn :lflags ["-undefined" "dynamic_lookup"])
+(setdyn :lflags (if is-mac ["-undefined" "dynamic_lookup"] []))
 
 
 # Specify libraries to build

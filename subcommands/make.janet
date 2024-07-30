@@ -23,7 +23,8 @@
   "Runs the `make` CLI utility with the given prefix"
   [prefix & args]
   (os/execute ["make" ;args] :epx
-              {"PREFIX" (string/join [(os/cwd) prefix] sep)}))
+              (merge {"PREFIX" (string/join [(os/cwd) prefix] sep)}
+                     (os/environ))))
 
 
 (defn- mkdirp
