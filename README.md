@@ -33,88 +33,128 @@ $ ./arnie make v1.35.0
 $ ./arnie make v1.32.0
 $ ./arnie bench
 # Benchmark: benchmarks/knucleotide/knucleotide2.janet
-Binary: ./installs/janet_0d9e999    Avg: 0.177464962005615
-Binary: ./installs/janet_b5996f5    Avg: 0.145122051239014
+Janet 1.32.0-b5996f5    Avg: 0.161672115325928
+Janet 1.35.0-0d9e999    Avg: 0.147693157196045
 
 # Benchmark: benchmarks/regex-redux/regexredux2.janet
-Binary: ./installs/janet_0d9e999    Avg: 0.0148491859436035
-Binary: ./installs/janet_b5996f5    Avg: 0.00767302513122559
+Janet 1.32.0-b5996f5    Avg: 0.00700902938842773
+Janet 1.35.0-0d9e999    Avg: 0.0256609916687012
 
 # Benchmark: benchmarks/nbody/nbody2.janet
-Binary: ./installs/janet_0d9e999    Avg: 0.050076961517334
-Binary: ./installs/janet_b5996f5    Avg: 0.0332450866699219
+Janet 1.32.0-b5996f5    Avg: 0.0324769020080566
+Janet 1.35.0-0d9e999    Avg: 0.0349478721618652
 
 # Benchmark: benchmarks/fannkuch/fannkuch4-parallel.janet
-Binary: ./installs/janet_0d9e999    Avg: 0.940793037414551
-Binary: ./installs/janet_b5996f5    Avg: 1.01315712928772
+Janet 1.32.0-b5996f5    Avg: 0.995783090591431
+Janet 1.35.0-0d9e999    Avg: 0.916385889053345
 
 # Benchmark: benchmarks/fannkuch/fannkuch1.janet
-Binary: ./installs/janet_0d9e999    Avg: 6.44058799743652
-Binary: ./installs/janet_b5996f5    Avg: 6.2940239906311
+Janet 1.32.0-b5996f5    Avg: 6.55872511863708
+Janet 1.35.0-0d9e999    Avg: 6.42196393013
 
 # Benchmark: benchmarks/fannkuch/fannkuch2.janet
-Binary: ./installs/janet_0d9e999    Avg: 5.04867696762085
-Binary: ./installs/janet_b5996f5    Avg: 5.03374409675598
+Janet 1.32.0-b5996f5    Avg: 4.95723104476929
+Janet 1.35.0-0d9e999    Avg: 4.99268579483032
 
 # Benchmark: benchmarks/fannkuch/fannkuch3.janet
-Binary: ./installs/janet_0d9e999    Avg: 1.42126893997192
-Binary: ./installs/janet_b5996f5    Avg: 1.34642910957336
+Janet 1.32.0-b5996f5    Avg: 1.38383603096008
+Janet 1.35.0-0d9e999    Avg: 1.38260197639465
 
 # Benchmark: benchmarks/fannkuch/fannkuch2b.janet
-Binary: ./installs/janet_0d9e999    Avg: 0.0256819725036621
-Binary: ./installs/janet_b5996f5    Avg: 0.0316779613494873
+Janet 1.32.0-b5996f5    Avg: 0.229254961013794
+Janet 1.35.0-0d9e999    Avg: 0.0403671264648438
 
 # Benchmark: benchmarks/fannkuch/fannkuch5.janet
-Binary: ./installs/janet_0d9e999    Avg: 2.48296499252319
-Binary: ./installs/janet_b5996f5    Avg: 2.64009308815002
+Janet 1.32.0-b5996f5    Avg: 2.87757301330566
+Janet 1.35.0-0d9e999    Avg: 2.47903203964233
 
 # Benchmark: benchmarks/fannkuch/fannkuch2-in.janet
-Binary: ./installs/janet_0d9e999    Avg: 4.60360503196716
-Binary: ./installs/janet_b5996f5    Avg: 4.45298409461975
+Janet 1.32.0-b5996f5    Avg: 4.76161003112793
+Janet 1.35.0-0d9e999    Avg: 4.70300483703613
 
 # Benchmark: benchmarks/regex-redux/regexredux.janet
-Binary: ./installs/janet_0d9e999    Avg: 0.0459721088409424
-Binary: ./installs/janet_b5996f5    Avg: 0.0564069747924805
+Janet 1.32.0-b5996f5    Avg: 0.0431818962097168
+Janet 1.35.0-0d9e999    Avg: 0.0177791118621826
+
+# Benchmark: benchmarks/regex-redux/regexredux2.janet
+Janet 1.32.0-b5996f5    Avg: 0.00700902938842773
+Janet 1.35.0-0d9e999    Avg: 0.0256609916687012
+
+# Benchmark: benchmarks/nbody/nbody2.janet
+Janet 1.32.0-b5996f5    Avg: 0.0324769020080566
+Janet 1.35.0-0d9e999    Avg: 0.0349478721618652
+
+# Benchmark: benchmarks/fannkuch/fannkuch4-parallel.janet
+Janet 1.32.0-b5996f5    Avg: 0.995783090591431
+Janet 1.35.0-0d9e999    Avg: 0.916385889053345
+
+# Benchmark: benchmarks/fannkuch/fannkuch1.janet
+Janet 1.32.0-b5996f5    Avg: 6.55872511863708
+Janet 1.35.0-0d9e999    Avg: 6.42196393013
+
+# Benchmark: benchmarks/fannkuch/fannkuch2.janet
+Janet 1.32.0-b5996f5    Avg: 4.95723104476929
+Janet 1.35.0-0d9e999    Avg: 4.99268579483032
+
+# Benchmark: benchmarks/fannkuch/fannkuch3.janet
+Janet 1.32.0-b5996f5    Avg: 1.38383603096008
+Janet 1.35.0-0d9e999    Avg: 1.38260197639465
+
+# Benchmark: benchmarks/fannkuch/fannkuch2b.janet
+Janet 1.32.0-b5996f5    Avg: 0.229254961013794
+Janet 1.35.0-0d9e999    Avg: 0.0403671264648438
+
+# Benchmark: benchmarks/fannkuch/fannkuch5.janet
+Janet 1.32.0-b5996f5    Avg: 2.87757301330566
+Janet 1.35.0-0d9e999    Avg: 2.47903203964233
+
+# Benchmark: benchmarks/fannkuch/fannkuch2-in.janet
+Janet 1.32.0-b5996f5    Avg: 4.76161003112793
+Janet 1.35.0-0d9e999    Avg: 4.70300483703613
+
+# Benchmark: benchmarks/regex-redux/regexredux.janet
+Janet 1.32.0-b5996f5    Avg: 0.0431818962097168
+Janet 1.35.0-0d9e999    Avg: 0.0177791118621826
 
 # Benchmark: benchmarks/fannkuch/fannkuch4.janet
-Binary: ./installs/janet_0d9e999    Avg: 3.67635917663574
-Binary: ./installs/janet_b5996f5    Avg: 3.76855492591858
+Janet 1.32.0-b5996f5    Avg: 3.56411409378052
+Janet 1.35.0-0d9e999    Avg: 3.69160199165344
 
 # Benchmark: benchmarks/reverse-complement/revcomp2_113.janet
-Binary: ./installs/janet_0d9e999    Avg: 0.0160830020904541
-Binary: ./installs/janet_b5996f5    Avg: 0.0293169021606445
+Janet 1.32.0-b5996f5    Avg: 0.00463700294494629
+Janet 1.35.0-0d9e999    Avg: 0.0048828125
 
 # Benchmark: benchmarks/binarytrees/binarytrees1.janet
-Binary: ./installs/janet_0d9e999    Avg: 0.0687720775604248
-Binary: ./installs/janet_b5996f5    Avg: 0.0186178684234619
+Janet 1.32.0-b5996f5    Avg: 0.0272018909454346
+Janet 1.35.0-0d9e999    Avg: 0.0221970081329346
 
 # Benchmark: benchmarks/reverse-complement/revcomp2.janet
-Binary: ./installs/janet_0d9e999    Avg: 0.0376360416412354
-Binary: ./installs/janet_b5996f5    Avg: 0.0157310962677002
+Janet 1.32.0-b5996f5    Avg: 0.0215470790863037
+Janet 1.35.0-0d9e999    Avg: 0.00510501861572266
 
 # Benchmark: benchmarks/knucleotide/knucleotide.janet
-Binary: ./installs/janet_0d9e999    Avg: 0.220686912536621
-Binary: ./installs/janet_b5996f5    Avg: 0.192162990570068
+Janet 1.32.0-b5996f5    Avg: 0.279989004135132
+Janet 1.35.0-0d9e999    Avg: 0.155150890350342
 
 # Benchmark: benchmarks/nbody/nbody.janet
-Binary: ./installs/janet_0d9e999    Avg: 0.0813360214233398
-Binary: ./installs/janet_b5996f5    Avg: 0.0696351528167725
+Janet 1.32.0-b5996f5    Avg: 0.0543398857116699
+Janet 1.35.0-0d9e999    Avg: 0.0534029006958008
 
 # Benchmark: benchmarks/reverse-complement/counts.janet
-Binary: ./installs/janet_0d9e999    Avg: 0.0654737949371338
-Binary: ./installs/janet_b5996f5    Avg: 0.0292580127716064
+Janet 1.32.0-b5996f5    Avg: 0.0332131385803223
+Janet 1.35.0-0d9e999    Avg: 0.0292308330535889
 
 # Benchmark: benchmarks/reverse-complement/revcomp.janet
-Binary: ./installs/janet_0d9e999    Avg: 0.0161888599395752
-Binary: ./installs/janet_b5996f5    Avg: 0.0384879112243652
+Janet 1.32.0-b5996f5    Avg: 0.021298885345459
+Janet 1.35.0-0d9e999    Avg: 0.00989699363708496
 
 # Benchmark: benchmarks/pidigits/pidigits.janet
-Binary: ./installs/janet_0d9e999    Avg: 0.265177011489868
-Binary: ./installs/janet_b5996f5    Avg: 0.220757007598877
+Janet 1.32.0-b5996f5    Avg: 0.212692975997925
+Janet 1.35.0-0d9e999    Avg: 0.39533805847168
 
 # Benchmark: benchmarks/fannkuch/fannkuch4-bakpakin.janet
-Binary: ./installs/janet_0d9e999    Avg: 3.23902702331543
-Binary: ./installs/janet_b5996f5    Avg: 3.32378482818604
+Janet 1.32.0-b5996f5    Avg: 3.37368202209473
+Janet 1.35.0-0d9e999    Avg: 3.26073312759399
 ```
 
 ## Bugs
