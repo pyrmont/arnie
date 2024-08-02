@@ -1,4 +1,4 @@
-(import ./deps/argy-bargy :as argy)
+(import ./deps/argy-bargy/argy-bargy :as argy)
 
 
 # Subcommands

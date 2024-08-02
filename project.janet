@@ -6,8 +6,10 @@
   :url "https://github.com/pyrmont/arnie"
   :repo "git+https://github.com/pyrmont/arnie"
   :dependencies []
-  :vendored [{:url "https://github.com/pyrmont/janet-big"
-              :tag "bugfix.os-support"
+  :vendored [{:url "https://github.com/pyrmont/argy-bargy"
+              :prefix "argy-bargy"
+              :include ["argy-bargy.janet"]}
+             {:url "https://github.com/andrewchambers/janet-big"
               :prefix "janet-big"
               :include ["big.c"
                         "cutils.c"
