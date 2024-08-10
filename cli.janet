@@ -63,3 +63,7 @@
         (do
           (eprint "arnie: missing subcommand\nTry 'arnie --help' for more information.")
           (os/exit 1))))))
+
+
+# for testing in development
+(defn- main [& args] (run))
