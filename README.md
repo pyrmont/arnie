@@ -14,14 +14,13 @@ Arnie has the following features:
   - supports user-defined benchmarks
   - supports printing results as JDN, JSON or plain text
 
-## Download
+## Installation
 
-Download the repository:
+Install via JPM:
 
 ```shell
-$ git clone https://github.com/pyrmont/arnie
-$ cd arnie
-$ ./arnie --help
+$ jpm install https://github.com/pyrmont/arnie
+$ arnie --help
 ```
 
 ## Usage
@@ -29,9 +28,9 @@ $ ./arnie --help
 Arnie can be used like this:
 
 ```shell
-$ ./arnie make v1.35.0
-$ ./arnie make v1.32.0
-$ ./arnie bench
+$ arnie make v1.35.0
+$ arnie make v1.32.0
+$ arnie bench
 # Benchmark: benchmarks/knucleotide/knucleotide2.janet
 Janet 1.32.0-b5996f5    Avg: 0.161672115325928
 Janet 1.35.0-0d9e999    Avg: 0.147693157196045
