@@ -8,7 +8,7 @@ Arnie has the following features:
 
 - downloads and compiles the Janet version to benchmark
   - supports URLs to Git repositories
-  - supports tags used by the official GitHub repository
+  - supports commit hashes and tags for GitHub repositories
 - benchmarks against an extensive test suite
   - supports benchmarking multiple Janet executables
   - supports user-defined benchmarks
