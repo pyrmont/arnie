@@ -5,7 +5,6 @@
   :license "MIT"
   :url "https://github.com/pyrmont/arnie"
   :repo "git+https://github.com/pyrmont/arnie"
-  :dependencies []
   :vendored [{:url "https://github.com/pyrmont/argy-bargy"
               :prefix "argy-bargy"
               :include ["argy-bargy.janet"]}
@@ -23,6 +22,21 @@
               :include ["spork/cc.janet"
                         "spork/path.janet"
                         "spork/sh.janet"]}])
+
+
+(declare-binscript
+  :main "arnie")
+
+
+(declare-source
+  :source ["benchmarks"
+           "build.janet"
+           "deps"
+           "cli.janet"
+           "util.janet"
+           "subcommands"]
+  :prefix "arnie")
+
 
 (task "vendor" []
   (def sep (if (= :windows (os/which)) "\\" "/"))

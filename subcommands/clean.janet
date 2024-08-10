@@ -1,33 +1,8 @@
-(def- is-win (or (= :windows (os/which)) (= :mingw (os/which))))
-(def- sep (if is-win "\\" "/"))
-(def- build-parent "build")
-(def- install-parent "installs")
+(import ../util)
 
 
-(defn- rm
-  "Remove a directory and all sub directories."
-  [path]
-  (case (os/lstat path :mode)
-    nil
-    nil
-
-    :directory
-    (do
-      (each subpath (os/dir path)
-        (rm (string path sep subpath)))
-      (os/rmdir path))
-
-    (os/rm path)))
-
-
-(defn- rmrf
-  "Hard deletes a directory tree"
-  [path]
-  (def sys (os/which))
-  (if is-win
-    (when (os/stat path :mode) # windows get rid of read-only files
-      (os/shell (string `rmdir /S /Q "` path `"`)))
-    (rm path)))
+(def- build-parent (util/path util/data-root "build"))
+(def- install-parent (util/path util/data-root "installs"))
 
 
 (defn- subcommand [args]
@@ -37,18 +12,18 @@
   (def both? (and (nil? build?) (nil? installs?)))
   (def clean-build? (or build? both?))
   (def clean-installs? (or installs? both?))
-  (when clean-build?
+  (when (and clean-build? (= :directory (os/stat build-parent :mode)))
     (print "Cleaning build...")
     (each child (os/dir build-parent)
       (unless (= ".gitkeep" child)
-        (def path (string build-parent sep child))
-        (rmrf path))))
-  (when clean-installs?
+        (def path (util/path build-parent child))
+        (util/rmrf path))))
+  (when (and clean-installs? (= :directory (os/stat install-parent :mode)))
     (print "Cleaning installs...")
     (each child (os/dir install-parent)
       (unless (= ".gitkeep" child)
-        (def path (string install-parent sep child))
-        (rmrf path)))))
+        (def path (util/path install-parent child))
+        (util/rmrf path)))))
 
 
 (def config

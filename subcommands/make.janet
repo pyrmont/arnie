@@ -1,7 +1,8 @@
-(def- is-win (or (= :windows (os/which)) (= :mingw (os/which))))
-(def- sep (if is-win "\\" "/"))
-(def- download-dir "tmp")
-(def- install-parent "installs")
+(import ../util)
+
+
+(def- download-dir (util/path util/data-root "tmp"))
+(def- install-parent (util/path util/data-root "installs"))
 
 
 (defn- echo
@@ -23,58 +24,22 @@
   "Runs the `make` CLI utility with the given prefix"
   [prefix & args]
   (os/execute ["make" ;args] :epx
-              (merge {"PREFIX" (string/join [(os/cwd) prefix] sep)}
+              (merge {"PREFIX" prefix}
                      (os/environ))))
-
-
-(defn- mkdirp
-  "Makes a directory tree, creating intermediate directories if necessary"
-  [path]
-  (def pwd (os/cwd))
-  (each dir (string/split sep path)
-    (os/mkdir dir)
-    (os/cd dir))
-  (os/cd pwd))
 
 
 (defn move-and-rename
   [install-dir commit-hash]
-  (def old-exe (string "janet" (when is-win ".exe")))
-  (def new-exe (string "janet_" commit-hash (when is-win ".exe")))
-  (os/rename (string/join [install-dir "bin" old-exe] sep)
-             (string/join [install-parent new-exe] sep)))
-
-
-(defn- rm
-  "Remove a directory and all sub directories."
-  [path]
-  (case (os/lstat path :mode)
-    nil
-    nil
-
-    :directory
-    (do
-      (each subpath (os/dir path)
-        (rm (string path sep subpath)))
-      (os/rmdir path))
-
-    (os/rm path)))
-
-
-(defn- rmrf
-  "Hard deletes a directory tree"
-  [path]
-  (def sys (os/which))
-  (if is-win
-    (when (os/stat path :mode) # windows get rid of read-only files
-      (os/shell (string `rmdir /S /Q "` path `"`)))
-    (rm path)))
+  (def old-exe (string "janet" (when util/is-win ".exe")))
+  (def new-exe (string "janet_" commit-hash (when util/is-win ".exe")))
+  (os/rename (util/path install-dir "bin" old-exe)
+             (util/path install-parent new-exe)))
 
 
 (defn- download
   [url save-dir &opt tag]
   (default tag "HEAD")
-  (mkdirp save-dir)
+  (util/mkdirp save-dir)
   (git "-c" "init.defaultBranch=master" "-C" save-dir "init")
   (git "-C" save-dir "remote" "add" "origin" url)
   (git "-C" save-dir "fetch" "--depth" "1" "origin" tag)
@@ -83,7 +48,7 @@
 
 (defn- build
   [source-dir install-dir commit-hash]
-  (mkdirp install-dir)
+  (util/mkdirp install-dir)
   (make install-dir "install" "-C" source-dir)
   (move-and-rename install-dir commit-hash))
 
@@ -94,12 +59,13 @@
   (def [url tag] (if (string/has-prefix? "http" repo)
                    (string/split "#" repo)
                    ["https://github.com/janet-lang/janet" repo]))
-  (defer (rmrf download-dir)
+  (defer (util/rmrf download-dir)
     (download url download-dir tag)
     (def commit-hash (echo "git" "-C" download-dir "rev-parse" "--short" "HEAD"))
-    (def install-dir (string/join [install-parent commit-hash] sep))
+    (def install-dir (util/path install-parent commit-hash))
     (build download-dir install-dir commit-hash)
-    (print "Executable installed to " install-parent sep "janet_" commit-hash)))
+    (def exe (string "janet_" commit-hash (when util/is-win ".exe")))
+    (print "Executable installed to " (util/path install-parent exe))))
 
 
 (def config

@@ -1,6 +1,12 @@
 # Use a C module for flipping
-
-(def dep-path (string "../../build/" janet/build "/arraymod"))
+# The native module has to be compiled for the version of Janet we're using so
+# making sure we import the correct version of that is a bit involved
+(def is-win (or (= :windows (os/which)) (= :mingw (os/which))))
+(def sep (if is-win "\\" "/"))
+(def data-root (if-let [home (os/getenv (if is-win "USERPROFILE" "HOME"))]
+                 (string "@" home sep ".arnie")
+                 (string ".." sep "..")))
+(def dep-path (string/join [data-root "build" janet/build "arraymod"] sep))
 (import* dep-path)
 
 (defn factorial [n]

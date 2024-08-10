@@ -1,24 +1,23 @@
-(import ../deps/medea/encode :as json/encoder)
+(import ../util)
 
 
-(def- is-win (or (= :windows (os/which)) (= :mingw (os/which))))
-(def- sep (if is-win "\\" "/"))
-(def- benchmarks-dir "benchmarks")
-(def- install-parent "installs")
+(def- benchmarks-dir (util/path util/lib-root "benchmarks"))
+(def- install-parent (util/path util/data-root "installs"))
+(def- build-script (util/path util/lib-root "build.janet"))
 
 
 (defn- get-exes []
   (def ret @[])
   (each child (os/dir install-parent)
     (when (string/has-prefix? "janet_" child)
-      (array/push ret (string/join ["." install-parent child] sep))))
+      (array/push ret (util/path install-parent child))))
   ret)
 
 
 (defn- prepare [exes]
   (def [r w] (os/pipe))
   (each exe exes
-    (when (one? (os/execute [exe "build.janet"] :p {:out w :err w}))
+    (when (one? (os/execute [exe build-script] :p {:out w :err w}))
       (ev/close w)
       (eprin (ev/read r :all))
       (os/exit 1)))
@@ -28,7 +27,7 @@
 (defn- get-benchmarks [path]
   (defn get-children [path &opt pred]
     (->> (os/dir path)
-         (map (fn [basename] (string path sep basename)))
+         (map (fn [basename] (util/path path basename)))
          (filter pred)))
   (defn dir? [path] (= :directory (os/stat path :mode)))
   (defn janet-file? [path] (and (= :file (os/stat path :mode))
@@ -42,7 +41,7 @@
 (defn- bench
   [benchmarks exes runs]
   (def ret @{})
-  (def devnull (file/open "/dev/null" :w))
+  (def devnull (util/devnull))
   (defer (:close devnull)
     (each exe exes
       (def [r w] (os/pipe))
@@ -101,7 +100,7 @@
     (printf "%j" times)
 
     "json"
-    (print (json/encoder/encode times))
+    (print (util/to-json times))
 
     "plain"
     (tabulate times)))

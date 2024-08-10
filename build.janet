@@ -1,11 +1,9 @@
+(import ./util)
 (import ./deps/spork/cc)
 
 
-(def- is-win (or (= :windows (os/which)) (= :mingw (os/which))))
-(def- is-mac (= :macos (os/which)))
-(def- sep (if is-win "\\" "/"))
-(def- build-parent "build")
-(def- build-dir (string/join [build-parent janet/build] sep))
+(def- build-parent (util/path util/data-root "build"))
+(def- build-dir (util/path build-parent janet/build))
 
 
 # Check if directory exists
@@ -19,8 +17,6 @@
 (setdyn :visit cc/visit-execute)
 # (setdyn :visit cc/visit-generate-makefile)
 (setdyn :build-dir build-dir)
-(setdyn :smart-libs false)
-(setdyn :lflags (if is-mac ["-undefined" "dynamic_lookup"] []))
 
 
 # Specify libraries to build
@@ -33,7 +29,7 @@
 
 
 # Compile libraries
-(os/mkdir build-dir)
+(util/mkdirp build-dir)
 (each lib libs
-  (def to (string build-dir sep (get lib :name) ".so"))
+  (def to (util/path build-dir (string (get lib :name) ".so")))
   (cc/compile-and-link-shared to ;(get lib :source)))
