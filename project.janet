@@ -25,7 +25,7 @@
 
 
 (declare-binscript
-  :main "arnie")
+  :main "bin/arnie")
 
 
 (declare-source
