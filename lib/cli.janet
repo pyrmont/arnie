@@ -1,10 +1,10 @@
-(import ./deps/argy-bargy/argy-bargy :as argy)
+(import ../deps/argy-bargy/argy-bargy :as argy)
 
 
 # Subcommands
-(import ./subcommands/bench :as cmd/bench)
-(import ./subcommands/clean :as cmd/clean)
-(import ./subcommands/make :as cmd/make)
+(import ../subcommands/bench :as cmd/bench)
+(import ../subcommands/clean :as cmd/clean)
+(import ../subcommands/make :as cmd/make)
 
 
 (def- subcommands

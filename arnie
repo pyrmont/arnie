@@ -1,4 +1,4 @@
 #!/usr/bin/env janet
-(import arnie/cli)
+(import arnie/lib/cli)
 
 (cli/run)

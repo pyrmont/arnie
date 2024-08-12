@@ -1,4 +1,4 @@
-(import ../util)
+(import ../lib/util)
 
 
 (def- download-dir (util/path util/data-root "tmp"))

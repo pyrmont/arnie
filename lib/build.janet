@@ -1,5 +1,5 @@
 (import ./util)
-(import ./deps/spork/cc)
+(import ../deps/spork/cc)
 
 
 (def- build-parent (util/path util/data-root "build"))

@@ -1,5 +1,5 @@
-(import ./deps/spork/path)
-(import ./deps/medea/encode)
+(import ../deps/spork/path)
+(import ../deps/medea/encode)
 
 
 (def path path/join)

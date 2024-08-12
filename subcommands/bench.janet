@@ -1,7 +1,7 @@
-(import ../util)
+(import ../lib/util)
 
 
-(def- benchmarks-dir (util/path util/lib-root "benchmarks"))
+(def- benchmarks-dir (util/path util/lib-root ".." "benchmarks"))
 (def- install-parent (util/path util/data-root "installs"))
 (def- build-script (util/path util/lib-root "build.janet"))
 
