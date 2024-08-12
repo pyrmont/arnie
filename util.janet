@@ -8,7 +8,7 @@
 
 (def is-win (or (= :windows (os/which)) (= :mingw (os/which))))
 (def is-mac (= :macos (os/which)))
-(def lib-root (dyn :arnie/lib-root (path/dirname (path/abspath (dyn :current-file)))))
+(def lib-root (path/dirname (path/abspath (dyn :current-file))))
 (def data-root (if-let [home (os/getenv (if is-win "USERPROFILE" "HOME"))]
                  (path/join home ".arnie")
                  lib-root))

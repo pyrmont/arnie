@@ -25,16 +25,16 @@
 
 
 (declare-binscript
-  :main "arnie")
+  :main "bin/arnie")
 
 
 (declare-source
   :source ["benchmarks"
-           "build.janet"
            "deps"
+           "subcommands"
+           "build.janet"
            "cli.janet"
-           "util.janet"
-           "subcommands"]
+           "util.janet"]
   :prefix "arnie")
 
 
