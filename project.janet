@@ -31,8 +31,7 @@
 (declare-source
   :source ["benchmarks"
            "deps"
-           "lib"
-           "subcommands"]
+           "lib"]
   :prefix "arnie")
 
 

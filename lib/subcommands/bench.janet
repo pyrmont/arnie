@@ -1,4 +1,4 @@
-(import ../lib/util)
+(import ../util)
 
 
 (def- benchmarks-dir (util/path util/lib-root ".." "benchmarks"))
@@ -123,8 +123,6 @@
   (prepare exes)
   # Run benchmarks
   (def times (bench benchmarks exes runs))
-  # (def times
-  #   @{"bin/janet_872b39c" @{"benchmarks/knucleotide/knucleotide2.janet" @[[1 1721702223.3480251 1721702223.4969079]] "benchmarks/regex-redux/regexredux2.janet" @[[1 1721702223.0794711 1721702223.0936899]] "benchmarks/nbody/nbody2.janet" @[[1 1721702223.0937009 1721702223.1233621]] "benchmarks/fannkuch/fannkuch4-parallel.janet" @[[1 1721702223.496944 1721702224.436059]] "benchmarks/fannkuch/fannkuch1.janet" @[[1 1721702227.8424881 1721702234.095679]] "benchmarks/fannkuch/fannkuch2.janet" @[[1 1721702242.1945441 1721702247.0684099]] "benchmarks/fannkuch/fannkuch3.janet" @[[1 1721702238.621717 1721702239.993576]] "benchmarks/fannkuch/fannkuch2b.janet" @[[1 1721702224.4360759 1721702224.4851761]] "benchmarks/fannkuch/fannkuch5.janet" @[[1 1721702239.9935949 1721702242.1945331]] "benchmarks/fannkuch/fannkuch2-in.janet" @[[1 1721702234.095696 1721702238.6217]] "benchmarks/regex-redux/regexredux.janet" @[[1 1721702223.0371201 1721702223.0794649]] "benchmarks/fannkuch/fannkuch4.janet" @[[1 1721702247.0684249 1721702250.636102]] "benchmarks/reverse-complement/revcomp2_113.janet" @[[1 1721702250.729691 1721702250.7344601]] "benchmarks/binarytrees/binarytrees1.janet" @[[1 1721702223.013068 1721702223.037117]] "benchmarks/reverse-complement/revcomp2.janet" @[[1 1721702250.682656 1721702250.705538]] "benchmarks/knucleotide/knucleotide.janet" @[[1 1721702223.175225 1721702223.3480101]] "benchmarks/nbody/nbody.janet" @[[1 1721702223.123369 1721702223.17522]] "benchmarks/reverse-complement/counts.janet" @[[1 1721702250.6361151 1721702250.6826501]] "benchmarks/reverse-complement/revcomp.janet" @[[1 1721702250.7055421 1721702250.7296879]] "benchmarks/pidigits/pidigits.janet" @[[1 1721702250.734463 1721702250.7727201]] "benchmarks/fannkuch/fannkuch4-bakpakin.janet" @[[1 1721702224.4851799 1721702227.8424709]]}})
   # Output results
   (show times format))
 

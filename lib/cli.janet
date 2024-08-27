@@ -2,9 +2,9 @@
 
 
 # Subcommands
-(import ../subcommands/bench :as cmd/bench)
-(import ../subcommands/clean :as cmd/clean)
-(import ../subcommands/make :as cmd/make)
+(import ./subcommands/bench :as cmd/bench)
+(import ./subcommands/clean :as cmd/clean)
+(import ./subcommands/make :as cmd/make)
 
 
 (def- subcommands
@@ -48,7 +48,7 @@
     (not (empty? help))
     (do
       (prin help)
-      (os/exit (if (get-in args [:opts "help"]) 1 0)))
+      (os/exit (if (get-in args [:opts "help"]) 0 1)))
 
     (not (empty? err))
     (do

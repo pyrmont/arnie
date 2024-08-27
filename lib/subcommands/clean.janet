@@ -1,4 +1,4 @@
-(import ../lib/util)
+(import ../util)
 
 
 (def- build-parent (util/path util/data-root "build"))
